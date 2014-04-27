@@ -4,11 +4,12 @@ applications:
     path: ./be
     mem: 64
     url: ${name}.${target-base}
+    services:
+      rd:
+        type: redis
   fe:
     name: frontend-static-page
     path: ./fe
     mem: 64
     buildpack: https://github.com/cloudfoundry-community/nginx-buildpack
     url: ${name}.${target-base}
-    #  services:
-    #    - mysql-db
