@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h2>backend data</h2>
+        <div id="data"></div>
+        <h2>change backend data</h2>
+        <input id="name"><button id="post">save</button>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script>
+
+            function doGET() {
+                $.get("//backend-app.s32demo.local/", function(data){ $('#data').text(data); });
+            };
+
+            $.ready(doGET());
+
+            $('#post').click(function() {
+                $.post("//backend-app.s32demo.local/", {name:$('#name').val()}, function(data) {
+                    console.log(data);
+                    doGET();
+                });
+            });
+            
+        </script>
+    </body>
+</html>
+

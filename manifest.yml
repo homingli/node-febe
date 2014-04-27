@@ -1,0 +1,14 @@
+applications:
+  be: 
+    name: backend-app
+    path: ./be
+    mem: 64
+    url: ${name}.${target-base}
+  fe:
+    name: frontend-static-page
+    path: ./fe
+    mem: 64
+    buildpack: https://github.com/cloudfoundry-community/nginx-buildpack
+    url: ${name}.${target-base}
+    #  services:
+    #    - mysql-db
