@@ -14,10 +14,8 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 app.get('/', function(req, res) {
-      res.setHeader("Access-Control-Allow-Origin", "*");
-
       r.get('name', function(err,name){
-        res.send('{ "ip": "'+ipv4+'", "name": "'+ (name || "not set") + '" }');
+        res.jsonp({"ip":ipv4,"name":name || "not set" });
       });
 });
 

@@ -8,7 +8,7 @@
         <script>
 
             function doGET() {
-                $.get("//backend-app.s32demo.local/", function(data){ $('#data').text(data); });
+                $.getJSON("//backend-app.s32demo.local/?callback=?", function(data){ $('#data').text(JSON.stringify(data)); });
             };
 
             $.ready(doGET());
