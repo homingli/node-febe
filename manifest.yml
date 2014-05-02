@@ -1,15 +1,15 @@
 applications:
-  be: 
+  backend: 
     name: backend-app
-    path: ./be
+    path: ./backend
     mem: 64
     url: ${name}.${target-base}
     services:
-      rd:
+      redis-db:
         type: redis
-  fe:
+  frontend:
     name: frontend-static-page
-    path: ./fe
+    path: ./frontend
     mem: 64
     buildpack: https://github.com/cloudfoundry-community/nginx-buildpack
     url: ${name}.${target-base}

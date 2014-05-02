@@ -1,0 +1,32 @@
+<html>
+    <body>
+
+        <h2>backend data</h2>
+        <div id="data"></div>
+
+        <h2>change backend data</h2>
+        <input id="name"><button id="post">save</button>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script>
+
+            // assumes name 'backend-app' deployed to the same domain
+            var backend_uri="//backend-app."+location.host.split('.').slice(1).join('.');
+
+            function doGET() {
+                $.getJSON(backend_uri+"/?callback=?", function(data){ $('#data').text(JSON.stringify(data)); });
+            };
+
+            $.ready(doGET());
+
+            $('#post').click(function() {
+                $.post(backend_uri, {name:$('#name').val()}, function(data) {
+                    console.log(data);
+                    doGET();
+                });
+            });
+            
+        </script>
+    </body>
+</html>
+
